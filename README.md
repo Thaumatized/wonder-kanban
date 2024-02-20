@@ -2,6 +2,8 @@
 
 Wonder kanban is kanban board made for use with my other projects. Not only is it useful for managing work for the projects, but it also allows for sharing plans with my audience in a more coherent way. For reference, the previous way is a discord channel.
 
+The kanban boards can be publicly viewed at [kanban.thaumatized.com](https://kanban.thaumatized.com)
+
 # Setting up an instace
 
 I will consider setting up a makefile to make this process automatic to the point of copying files to a server.
