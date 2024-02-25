@@ -11,7 +11,7 @@ I will consider setting up a makefile to make this process automatic to the poin
 ## Backend
 the backend is built with PHP and can be transferred to a server running php as is. Do however provide the php with credentials for the SQL server.
 
-for the SQL server there is the wonder-kanban.sql file containing sql to create the necessary tables.
+for the SQL server there is the kanban.sql file containing sql to create the necessary tables.
 
 ## Frontend
 frontend scripting is done with TypeScript and must be compiled to JavaScript. this can be done using tsc.
