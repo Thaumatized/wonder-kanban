@@ -9,7 +9,7 @@ The kanban boards can be publicly viewed at [kanban.thaumatized.com](https://kan
 I will consider setting up a makefile to make this process automatic to the point of copying files to a server.
 
 ## Backend
-the backend is built with PHP and can be transferred to a server running php as is. Do however provide the php with credentials for the SQL server.
+the backend is built with PHP and can be transferred to a server running php as is. Do however change backend/db-template.php to backend/db.php and fill it with credentials.
 
 for the SQL server there is the kanban.sql file containing sql to create the necessary tables.
 
