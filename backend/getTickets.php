@@ -8,8 +8,7 @@
 	
 	echo("[");
 	$first = true;
-	while ($row = mysqli_fetch_array($result)) {
-		unset($row['0']);
+	while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 		if(!$first)
 		{
 			echo(",");
@@ -18,5 +17,4 @@
 		echo(json_encode($row));
 	}
 	echo("]");
-	//*/
 ?>
