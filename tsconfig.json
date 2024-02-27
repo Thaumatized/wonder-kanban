@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+        "lib": ["es5", "es6", "dom"],
+        "rootDir": "./frontend-source/scripts/",
+        "outDir": "./js-build/scripts/",
+        "strict": true,
+    }
+}
