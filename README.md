@@ -1,22 +1,21 @@
 # Wonder kanban
 
-Wonder kanban is kanban board made for use with my other projects. Not only is it useful for managing work for the projects, but it also allows for sharing plans with my audience in a more coherent way. For reference, the previous way is a discord channel.
+Wonder kanban is kanban board made for use with my other projects. Not only is it useful for managing work for the projects, but it also allows for sharing plans with my audience in a more coherent way. For reference, the previous way was to have a discord channel for each project.
 
 The kanban boards can be publicly viewed at [kanban.thaumatized.com](https://kanban.thaumatized.com)
 
-# Setting up an instace
+# Setting up an instance
 
-I will consider setting up a makefile to make this process automatic to the point of copying files to a server.
+First of all, the project is built with PHP and TypeScript, so a server running PHP is required. The project also uses a SQL server for data storage.
 
-## Backend
-the backend is built with PHP and can be transferred to a server running php as is. Do however change backend/db-template.php to backend/db.php and fill it with credentials.
+to compile the TypeScript and SCSS, the sass and typescript compilers are required. You will also need browserify to convert the compiled TypeScript to a file that can be run in the browser.
 
-for the SQL server there is the kanban.sql file containing sql to create the necessary tables.
+here is a command to compile with:
+> tsc; browserify js-build/scripts/index.js -o build/scripts/index.js;  mkdir build/api -p; cp api/* build/api/; cp frontend-source/structure/* build/;
 
-## Frontend
-frontend scripting is done with TypeScript and must be compiled to JavaScript. this can be done using tsc.
-styles are done with SCSS and must be compiled to css using the sass preprocessor.
+then you can copy the contents of the build folder to the server. Here is the command I use for that:
+> cp /drives/mass_storage/AAA_WIP/GIT/wonder-kanban/build/* . -r
 
-the structure is html/php and can be copied over as is.
-
-the compiled scripts and styles are expected to be in the "scripts" and "styles" folders respectively.
+## SQL server
+For the SQL server there is the `kanban.sql` file containing sql to create the necessary tables.
+Change `backend/db-template.php` to `backend/db.php` and fill it with credentials.
