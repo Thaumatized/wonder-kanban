@@ -11,7 +11,7 @@ First of all, the project is built with PHP and TypeScript, so a server running 
 to compile the TypeScript and SCSS, the sass and typescript compilers are required. You will also need browserify to convert the compiled TypeScript to a file that can be run in the browser.
 
 here is a command to compile with:
-> tsc; browserify js-build/scripts/index.js -o build/scripts/index.js;  mkdir build/api -p; cp api/* build/api/; cp frontend-source/structure/* build/;
+> tsc; browserify js-build/scripts/index.js --s js -o build/scripts/index.js;  mkdir build/api -p; cp api/* build/api/; cp frontend-source/structure/* build/;
 
 then you can copy the contents of the build folder to the server. Here is the command I use for that:
 > cp /drives/mass_storage/AAA_WIP/GIT/wonder-kanban/build/* . -r
