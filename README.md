@@ -8,7 +8,8 @@ The kanban boards can be publicly viewed at [kanban.thaumatized.com](https://kan
 
 First of all, the project is built with PHP and TypeScript, so a server running PHP is required. The project also uses a SQL server for data storage.
 
-to compile the TypeScript and SCSS, the sass and typescript compilers are required. You will also need browserify to convert the compiled TypeScript to a file that can be run in the browser.
+to compile the TypeScript and SCSS, the sass and typescript compilers are required. You will also need browserify to convert the compiled TypeScript to a file that can be run in the browser. Since the TypeScript compiler and browserify are npm packages, I recommend also getting sass from npm.
+> npm install -g typescript browserify sass
 
 here is a command to compile with:
 > tsc; browserify js-build/scripts/index.js --s js -o build/scripts/index.js;  mkdir build/api -p; cp api/* build/api/; cp frontend-source/structure/* build/;
