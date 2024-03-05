@@ -12,7 +12,7 @@ to compile the TypeScript and SCSS, the sass and typescript compilers are requir
 > npm install -g typescript browserify sass
 
 here is a command to compile with:
-> tsc; browserify js-build/scripts/index.js --s js -o build/scripts/index.js;  mkdir build/api -p; cp api/* build/api/; cp frontend-source/structure/* build/;
+> tsc; browserify js-build/scripts/index.js --s js -o build/scripts/index.js;  mkdir build/api -p; cp api/* build/api/; cp frontend-source/structure/* build/; sass frontend-source/styles/index.scss build/styles.css
 
 then you can copy the contents of the build folder to the server. Here is the command I use for that:
 > cp /drives/mass_storage/AAA_WIP/GIT/wonder-kanban/build/* . -r

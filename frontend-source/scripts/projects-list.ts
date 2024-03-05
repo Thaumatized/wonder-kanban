@@ -8,7 +8,7 @@ export function renderProjectList(projects: Project[]) {
     projectsList.innerHTML = "";
     projects.forEach(project => {
         projectsList.innerHTML += `
-            <h2 onClick="js.selectProject(${project.id})">${project.name}</h2>
+            <h2 class="project" onClick="js.selectProject(${project.id})">${project.name}</h2>
         `;
     });
 }
