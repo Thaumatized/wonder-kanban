@@ -19,6 +19,6 @@ export function selectProject(projectId: number) {
 
     getTickets(selectedProject.id).then((newTickets: Ticket[]) => {
         tickets = newTickets;
-        renderTicketsList(tickets);
+        renderTicketsList(selectedProject!, tickets);
     });
 }
