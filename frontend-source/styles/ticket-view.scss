@@ -5,11 +5,11 @@
     height: 100vh;
     top: 0;
     left: 0;
-    background-color: #ffffffaa;
+    background-color: rgba(240, 248, 255, 0.5); //aliceblue at 50% opacity
 
     #ticket-view {
-        margin: 10rem;
-        background-color: aliceblue;
+        margin: 5rem;
+        background-color: lightblue;
         border: 0.1rem solid darkblue;
         border-radius: 0.5rem;
         color: darkblue;
