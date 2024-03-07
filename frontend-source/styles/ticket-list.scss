@@ -1,7 +1,15 @@
 #ticket-list {
+    padding: 0 0.5rem;
     display: grid;
     grid-template-rows: auto;
     .ticket {
         display: inline-block;
+        height: 5rem;
+        background-color: lightblue;
+        color: darkblue;
+        border-radius: 0.5rem;
+        border: 0.1rem solid darkblue;
+        margin: 0.5rem;
+        padding: 1rem;
     }
 }
