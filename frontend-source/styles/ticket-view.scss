@@ -1,0 +1,33 @@
+#ticket-view-container {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: #ffffffaa;
+
+    #ticket-view {
+        margin: 10rem;
+        background-color: aliceblue;
+        border: 0.1rem solid darkblue;
+        border-radius: 0.5rem;
+        color: darkblue;
+        padding: 1rem;
+
+        h2 {
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+            width: calc(100% - 11rem);
+        }
+
+        .status-text {
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+            width: 10rem;
+            text-align: right;
+        }
+    }
+}

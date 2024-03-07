@@ -1,5 +1,6 @@
 import { renderProjectList } from './projects-list';
-import { renderTicketsList } from './tickets-list';
+import { renderTicketView, closeTicketView } from './ticket-view';
+import { renderTicketList } from './ticket-list';
 import { getProjects, getTickets } from './utils/data-access';
 import { Project, Ticket } from './utils/types';
 
@@ -19,7 +20,7 @@ export function selectProject(projectId: number) {
 
     getTickets(selectedProject.id).then((newTickets: Ticket[]) => {
         tickets = newTickets;
-        renderTicketsList(selectedProject!, tickets);
+        renderTicketList(selectedProject!, tickets);
     });
 }
 
@@ -28,5 +29,10 @@ export function openTicket(ticketId: number) {
 
     if(!ticket) { console.error(`No ticket found with id ${ticketId}`); return; }
 
-    alert(`Ticket opened: ${ticket.summary}`);
+    renderTicketView(selectedProject!, ticket);
 }
+
+export function closeTicket() 
+{
+    closeTicketView()
+};
