@@ -22,3 +22,11 @@ export function selectProject(projectId: number) {
         renderTicketsList(selectedProject!, tickets);
     });
 }
+
+export function openTicket(ticketId: number) {
+    const ticket = tickets.find(ticket => ticket.id === ticketId);
+
+    if(!ticket) { console.error(`No ticket found with id ${ticketId}`); return; }
+
+    alert(`Ticket opened: ${ticket.summary}`);
+}

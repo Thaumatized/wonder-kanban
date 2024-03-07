@@ -20,5 +20,11 @@
         border: 0.1rem solid darkblue;
         margin: 0.5rem;
         padding: 1rem;
+        cursor: pointer;
+    
+        h3 {
+            margin: 0;
+            padding: 0;
+        }
     }
 }

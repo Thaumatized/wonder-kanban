@@ -20,8 +20,8 @@ export function renderTicketsList(project: Project, tickets: Ticket[]) {
     tickets.forEach(ticket => {
         const column = project.statuses.findIndex(status => status.id === ticket.statusId);
         ticketsList.innerHTML += `
-            <div class="ticket" onClick="js.selectTicket(${ticket.id})" style="grid-column: ${column+1} / span 1; grid-row: ${countInColumns[column]++} / span 1;">
-                ${ticket.summary}
+            <div class="ticket" onClick="js.openTicket(${ticket.id})" style="grid-column: ${column+1} / span 1; grid-row: ${countInColumns[column]++} / span 1;">
+                <h3>[${project.abbreviation}-${ticket.internalId}] ${ticket.summary}</h3>
             </div>
         `;
     });
