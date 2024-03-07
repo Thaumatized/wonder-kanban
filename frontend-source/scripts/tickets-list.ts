@@ -8,7 +8,15 @@ export function renderTicketsList(project: Project, tickets: Ticket[]) {
     ticketsList.innerHTML = "";
     ticketsList.style.gridTemplateColumns = `repeat(${project.statuses.length}, 1fr)`;
 
-    const countInColumns = Array(project.statuses.length).fill(1);
+    project.statuses.forEach((status, index) => {
+        ticketsList.innerHTML += `
+            <h2 class="status" style="grid-column: ${index+1} / span 1; grid-row: 1 / span 1;">
+                ${status.name}
+            </h2>
+        `;
+    });
+
+    const countInColumns = Array(project.statuses.length).fill(2);
     tickets.forEach(ticket => {
         const column = project.statuses.findIndex(status => status.id === ticket.statusId);
         ticketsList.innerHTML += `
