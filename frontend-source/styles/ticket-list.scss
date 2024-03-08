@@ -2,6 +2,19 @@
     padding: 0 0.5rem;
     display: grid;
     grid-template-rows: auto;
+
+    #new-ticket-button {
+        margin: 0 calc(0.5rem - 2.5px);
+        height: 2rem;
+    
+        font-size: 1.25rem;
+    
+        color: darkblue;
+        background-color: lightblue;
+        border: 0.1rem solid darkblue;
+        border-radius: 0.5rem;
+    }
+
     .status {
         display: inline-block;
         padding: 0.5rem;

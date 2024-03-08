@@ -10,17 +10,24 @@ export async function getTickets(projectId: number) : Promise<Ticket[]>{
     return response.json();
 }
 
-export async function validateLogin(password: string) : Promise<boolean>{
-    const response = await fetch(`/api/validatePassword.php`, {
+async function post(url: string, data: any) : Promise<Response>{
+    const response = await fetch(url, {
         method: "POST",
         mode: "same-origin",
         cache: "no-cache",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({"password": password}),
+        body: JSON.stringify(data),
       });
-      const txt = await response.text();
-      console.warn(txt);
-    return txt === "true";
+      return response;
+}
+
+export async function newTicket(projectId: number, password: string) : Promise<void>{
+    const response = await post(`/api/createTicket.php`, {"password": password, "projectId": projectId});
+}
+
+export async function validateLogin(password: string) : Promise<boolean>{
+    const response = await post(`/api/validatePassword.php`, {"password": password});
+    return await response.text() === "true";
 }
