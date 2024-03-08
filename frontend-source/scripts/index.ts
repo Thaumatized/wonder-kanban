@@ -1,12 +1,13 @@
 import { renderProjectList } from './projects-list';
 import { renderTicketView, closeTicketView } from './ticket-view';
 import { renderTicketList } from './ticket-list';
-import { getProjects, getTickets } from './utils/data-access';
+import { getProjects, getTickets, validateLogin } from './utils/data-access';
 import { Project, Ticket } from './utils/types';
 
 let projects: Project[] = [];
 let selectedProject: Project | null = null;
 let tickets: Ticket[] = [];
+let password: string = "";
 
 getProjects().then((newProjects: Project[]) => {
     projects = newProjects;
@@ -36,3 +37,33 @@ export function closeTicket()
 {
     closeTicketView()
 };
+
+export function login() {
+    const loginField = document.getElementById("login-field") as HTMLInputElement | null;
+    const newPassword = loginField!.value;
+    
+    validateLogin(newPassword).then((success: boolean) => {
+        if(success) {
+            password = newPassword;
+            document.getElementById("login-button")!.innerText = "Logout";
+            loginField!.style.display = "none";
+            loginField!.value = "";
+        } else {
+            alert("Invalid password");
+        }
+    });
+}
+
+export function logout() {
+    password = "";
+    document.getElementById("login-button")!.innerText = "Login";
+    document.getElementById("login-field")!.style.display = "inline-block";
+}
+
+export function loginToggle() {
+    if(password) {
+        logout();
+    } else {
+        login();
+    }
+}

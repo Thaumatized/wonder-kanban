@@ -3,12 +3,10 @@ import { Project, Ticket } from "./utils/types";
 export function renderTicketView(project: Project, ticket: Ticket) {
     const ticketView = document.getElementById('ticket-view');
 
-    if(!ticketView) { console.error('No ticket view found'); return; };
+    ticketView!.innerHTML = "";
+    ticketView!.parentElement!.style.display = `block`;
 
-    ticketView.innerHTML = "";
-    ticketView.parentElement!.style.display = `block`;
-
-    ticketView.innerHTML += `
+    ticketView!.innerHTML += `
         <h2>
             [${project.abbreviation}-${ticket.internalId}] ${ticket.summary}
         </h2>
