@@ -1,7 +1,7 @@
 import { renderProjectList } from './projects-list';
 import { renderTicketView, closeTicketView, readTicketFromView } from './ticket-view';
 import { renderTicketList } from './ticket-list';
-import { getProjects, getTickets, newTicket, updateTicket, validateLogin } from './utils/data-access';
+import { getProjects, getTickets, newProject, newTicket, updateTicket, validateLogin } from './utils/data-access';
 import { Project, Ticket } from './utils/types';
 
 let projects: Project[] = [];
@@ -50,6 +50,7 @@ async function login() {
             document.getElementById("login-button")!.innerText = "Logout";
             loginField!.style.display = "none";
             loginField!.value = "";
+            document.getElementById("new-project-button")!.style.display = "block";
         } else {
             alert("Invalid password");
         }
@@ -60,6 +61,7 @@ function logout() {
     password = "";
     document.getElementById("login-button")!.innerText = "Login";
     document.getElementById("login-field")!.style.display = "inline-block";
+    document.getElementById("new-project-button")!.style.display = "none";
 }
 
 export function loginToggle() {
@@ -97,4 +99,22 @@ export function saveTicket() {
             closeTicketView();
         });
     });
+}
+
+export function createProject() {
+    const name = prompt("Enter the name of the new project");
+    if(!name) { return; }
+    const abbreviation = prompt("Enter the abbreviation of the new project");
+    if(!abbreviation) { return; }
+
+    const confirmation = confirm(`Confirm creation of project [${abbreviation}] ${name}`);
+
+    if(confirmation && name && abbreviation && password) {
+        newProject(name, abbreviation, password).then(() => {
+            getProjects().then((newProjects: Project[]) => {
+                projects = newProjects;
+                renderProjectList(projects);
+            });
+        });
+    }
 }

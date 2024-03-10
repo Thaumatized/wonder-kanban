@@ -1,6 +1,4 @@
 <?php
-error_reporting(E_ALL);
-
 	include 'pass.php';
     if(!$validationOk) {
         die("Invalid password");

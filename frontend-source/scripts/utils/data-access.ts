@@ -27,6 +27,10 @@ export async function newTicket(projectId: number, password: string) : Promise<v
     const response = await post(`/api/createTicket.php`, {"password": password, "projectId": projectId});
 }
 
+export async function newProject(name: string, abbreviation: string, password: string) : Promise<void>{
+    const response = await post(`/api/createProject.php`, {"password": password, "name": name, "abbreviation": abbreviation});
+}
+
 export async function validateLogin(password: string) : Promise<boolean>{
     const response = await post(`/api/validatePassword.php`, {"password": password});
     return await response.text() === "true";
@@ -34,5 +38,4 @@ export async function validateLogin(password: string) : Promise<boolean>{
 
 export async function updateTicket(ticket: Ticket, password: string) : Promise<void>{
     const response = await post(`/api/updateTicket.php`, {"password": password, "ticket": ticket});
-    console.log(response.text());
 }
