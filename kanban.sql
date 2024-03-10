@@ -41,7 +41,7 @@ CREATE TABLE `statuses` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `projectId` int(10) unsigned DEFAULT NULL,
   `renderOrder` tinyint(3) unsigned DEFAULT NULL,
-  `name` varchar(200) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
