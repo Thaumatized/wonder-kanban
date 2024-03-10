@@ -1,12 +1,13 @@
 import { renderProjectList } from './projects-list';
-import { renderTicketView, closeTicketView } from './ticket-view';
+import { renderTicketView, closeTicketView, readTicketFromView } from './ticket-view';
 import { renderTicketList } from './ticket-list';
-import { getProjects, getTickets, newTicket, validateLogin } from './utils/data-access';
+import { getProjects, getTickets, newTicket, updateTicket, validateLogin } from './utils/data-access';
 import { Project, Ticket } from './utils/types';
 
 let projects: Project[] = [];
 let selectedProject: Project | null = null;
 let tickets: Ticket[] = [];
+let selectedTicket: Ticket | null = null;
 let password: string = "";
 
 getProjects().then((newProjects: Project[]) => {
@@ -30,7 +31,8 @@ export function openTicket(ticketId: number) {
 
     if(!ticket) { console.error(`No ticket found with id ${ticketId}`); return; }
 
-    renderTicketView(selectedProject!, ticket);
+    selectedTicket = ticket;
+    renderTicketView(selectedProject!, ticket, password != "");
 }
 
 export function closeTicket() 
@@ -82,6 +84,17 @@ export function createTicket()
         getTickets(selectedProject!.id).then((newTickets: Ticket[]) => {
             tickets = newTickets;
             renderTicketList(selectedProject!, tickets, password != "");
+        });
+    });
+} 
+
+export function saveTicket() {
+    const ticket: Ticket = {...selectedTicket!, ...readTicketFromView()};
+    updateTicket(ticket, password).then(() => {
+        getTickets(selectedProject!.id).then((newTickets: Ticket[]) => {
+            tickets = newTickets;
+            renderTicketList(selectedProject!, tickets, password != "");
+            closeTicketView();
         });
     });
 }

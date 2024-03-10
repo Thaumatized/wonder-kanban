@@ -5,29 +5,77 @@
     height: 100vh;
     top: 0;
     left: 0;
-    background-color: rgba(240, 248, 255, 0.5); //aliceblue at 50% opacity
+
+    #ticket-view-bg{
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        background-color: rgba(240, 248, 255, 0.5); //aliceblue at 50% opacity
+    }
 
     #ticket-view {
+        position: fixed;
         margin: 5rem;
+        box-sizing: border-box;
+        width: calc(100vw - 10rem);
+        height: calc(100vh - 10rem);
         background-color: lightblue;
         border: 0.1rem solid darkblue;
         border-radius: 0.5rem;
         color: darkblue;
         padding: 1rem;
 
-        h2 {
+        #ticket-view-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: nowrap;
+            margin-bottom: 1rem;
+            gap: 1rem;
+
+            h2 {
+                margin: 0;
+                padding: 0;
+            }
+    
+            input {
+                flex: 1;
+                margin: 0;
+                padding: 0;
+            }
+    
+            p {
+                margin: 0;
+                padding: 0;
+                text-align: right;
+            }
+        }
+        
+        .description {
+            width: 100%;
+            height: calc(100% - 45px - 36px);
             margin: 0;
-            padding: 0;
-            display: inline-block;
-            width: calc(100% - 11rem);
         }
 
-        .status-text {
-            margin: 0;
-            padding: 0;
-            display: inline-block;
-            width: 10rem;
-            text-align: right;
+        textarea {
+            resize: none;
+        }
+
+        #ticket-view-footer-row {
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            flex-wrap: nowrap;
+            margin-top: 1rem;
+            gap: 1rem;
+
+            button {
+                width: 5rem;
+                margin: 0;
+                padding: 0;
+            }
         }
     }
 }

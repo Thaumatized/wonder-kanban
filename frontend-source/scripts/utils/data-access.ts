@@ -31,3 +31,8 @@ export async function validateLogin(password: string) : Promise<boolean>{
     const response = await post(`/api/validatePassword.php`, {"password": password});
     return await response.text() === "true";
 }
+
+export async function updateTicket(ticket: Ticket, password: string) : Promise<void>{
+    const response = await post(`/api/updateTicket.php`, {"password": password, "ticket": ticket});
+    console.log(response.text());
+}
