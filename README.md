@@ -11,8 +11,8 @@ First of all, the project is built with PHP and TypeScript, so a server running 
 For the SQL server there is the `kanban.sql` file containing sql to create the necessary tables.
 
 ## Credentials
-Change `backend/db-template.php` to `backend/db.php` and fill it with credentials.
-Add temporary credentials to `backend/pass-template.php` to allow for administration. This is a temporary measure.
+Change `backend/db-template.php` to `backend/db.php` and fill it with credentials.  
+change `backend/pass-template.php` to pass.php and fill it with a tempoary password to allow for administration. This is a temporary measure.  
 
 ## Compiling
 to compile the TypeScript and SCSS, the sass and typescript compilers are required. You will also need browserify to convert the compiled TypeScript to a file that can be run in the browser. Since the TypeScript compiler and browserify are npm packages, I recommend also getting sass from npm.
