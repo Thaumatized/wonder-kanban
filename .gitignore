@@ -1,3 +1,4 @@
 backend/db.php
 js-build/
 build/
+node_modules/

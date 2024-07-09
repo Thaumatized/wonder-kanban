@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "build": "npx tsc; npx browserify js-build/scripts/index.js --s js -o build/scripts/index.js;  mkdir build/api -p; cp api/* build/api/; cp frontend-source/structure/* build/; npx sass frontend-source/styles/index.scss build/styles.css"
+  },
+  "dependencies": {
+    "browserify": "^17.0.0",
+    "sass": "^1.77.6",
+    "typescript": "^5.5.3"
+  }
+}
