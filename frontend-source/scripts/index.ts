@@ -5,20 +5,22 @@ import { getProjects, getTickets, newProject, newTicket, updateTicket, validateL
 import { Project, Ticket } from './utils/types';
 
 let projects: Project[] = [];
-let selectedProject: Project | null = null;
+let selectedProject: Project | undefined = undefined;
 let tickets: Ticket[] = [];
-let selectedTicket: Ticket | null = null;
+let selectedTicket: Ticket | undefined = undefined;
 let password: string = "";
 
 getProjects().then((newProjects: Project[]) => {
     projects = newProjects;
-    renderProjectList(projects);
+    renderProjectList(projects, selectedProject);
 });
 
 export function selectProject(projectId: number) {
-    selectedProject = projects.find(project => project.id === projectId) || null;
+    selectedProject = projects.find(project => project.id === projectId) || undefined;
 
     if(!selectedProject) { console.error(`No project found with id ${projectId}`); return; }
+
+    renderProjectList(projects, selectedProject);
 
     getTickets(selectedProject.id).then((newTickets: Ticket[]) => {
         tickets = newTickets;
@@ -41,7 +43,7 @@ export function closeTicket()
 };
 
 async function login() {
-    const loginField = document.getElementById("login-field") as HTMLInputElement | null;
+    const loginField = document.getElementById("login-field") as HTMLInputElement | undefined;
     const newPassword = loginField!.value;
     
     await validateLogin(newPassword).then((success: boolean) => {
@@ -113,7 +115,7 @@ export function createProject() {
         newProject(name, abbreviation, password).then(() => {
             getProjects().then((newProjects: Project[]) => {
                 projects = newProjects;
-                renderProjectList(projects);
+                renderProjectList(projects, selectedProject);
             });
         });
     }
