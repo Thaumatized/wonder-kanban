@@ -1,3 +1,4 @@
+import { sanitizeStringForHTML } from "./utils/data-access";
 import { Project, Ticket } from "./utils/types";
 
 export function renderTicketView(project: Project, ticket: Ticket, loggedIn: boolean) {
@@ -10,7 +11,7 @@ export function renderTicketView(project: Project, ticket: Ticket, loggedIn: boo
         ticketView!.innerHTML += `
             <div id="ticket-view-header-row">
                 <h2>
-                    [${project.abbreviation}-${ticket.internalId}]
+                    [${sanitizeStringForHTML(project.abbreviation)}-${ticket.internalId}]
                 </h2>
                 <input id="ticket-summary-field" type="text" placeholder="Summary"></input>
                 <select id="ticket-status-field"></select>
@@ -34,7 +35,7 @@ export function renderTicketView(project: Project, ticket: Ticket, loggedIn: boo
         project.statuses.forEach(status => {
             statusField!.innerHTML += `
             <option value="${status.id}">
-                ${status.name}
+                ${sanitizeStringForHTML(status.name)}
             </option>`
         });
         statusField.value = ticket.statusId.toString();
@@ -44,14 +45,14 @@ export function renderTicketView(project: Project, ticket: Ticket, loggedIn: boo
         ticketView!.innerHTML += `
             <div id="ticket-view-header-row">
                 <h2>
-                    [${project.abbreviation}-${ticket.internalId}] ${ticket.summary}
+                    [${sanitizeStringForHTML(project.abbreviation)}-${ticket.internalId}] ${sanitizeStringForHTML(ticket.summary)}
                 </h2>
                 <p>
-                    ${project.statuses.find(status => status.id === ticket.statusId)?.name}
+                    ${sanitizeStringForHTML(project.statuses.find(status => status.id === ticket.statusId)?.name ?? "")}
                 </p>
             </div>
             <p class="description">
-                ${ticket.description}
+                ${sanitizeStringForHTML(ticket.description)}
             </p>
             <div id="ticket-view-footer-row">
                 <button id="close-ticket-button" onClick="js.closeTicket()">

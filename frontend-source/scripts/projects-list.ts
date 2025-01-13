@@ -1,3 +1,4 @@
+import { sanitizeStringForHTML } from "./utils/data-access";
 import { Project } from "./utils/types";
 
 export function renderProjectList(projects: Project[], selected?: Project) {
@@ -7,7 +8,7 @@ export function renderProjectList(projects: Project[], selected?: Project) {
     projectsList!.innerHTML = "";
     projects.forEach(project => {
         projectsList!.innerHTML += `
-            <h2 class="${project.id === selected?.id ? "project selected" : "project"}" onClick="js.selectProject(${project.id})">${project.name}</h2>
+            <h2 class="${project.id === selected?.id ? "project selected" : "project"}" onClick="js.selectProject(${project.id})">${sanitizeStringForHTML(project.name)}</h2>
         `;
     });
 }

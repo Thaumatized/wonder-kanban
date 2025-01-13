@@ -1,3 +1,4 @@
+import { sanitizeStringForHTML } from "./utils/data-access";
 import { Project, Ticket } from "./utils/types";
 
 export function renderTicketList(project: Project, tickets: Ticket[], loggedIn: boolean) {
@@ -19,7 +20,7 @@ export function renderTicketList(project: Project, tickets: Ticket[], loggedIn: 
     project.statuses.forEach((status, index) => {
         ticketList!.innerHTML += `
             <h2 class="status" style="grid-column: ${index+1} / span 1; grid-row: ${countInColumns[index]++} / span 1;">
-                ${status.name}
+                ${sanitizeStringForHTML(status.name)}
             </h2>
         `;
     });
@@ -28,7 +29,7 @@ export function renderTicketList(project: Project, tickets: Ticket[], loggedIn: 
         const column = project.statuses.findIndex(status => status.id === ticket.statusId);
         ticketList!.innerHTML += `
             <div class="ticket" onClick="js.openTicket(${ticket.id})" style="grid-column: ${column+1} / span 1; grid-row: ${countInColumns[column]++} / span 1;">
-                <h3>[${project.abbreviation}-${ticket.internalId}] ${ticket.summary}</h3>
+                <h3>[${sanitizeStringForHTML(project.abbreviation)}-${ticket.internalId}] ${sanitizeStringForHTML(ticket.summary)}</h3>
             </div>
         `;
     });

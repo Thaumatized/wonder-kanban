@@ -39,3 +39,8 @@ export async function validateLogin(password: string) : Promise<boolean>{
 export async function updateTicket(ticket: Ticket, password: string) : Promise<void>{
     const response = await post(`/api/updateTicket.php`, {"password": password, "ticket": ticket});
 }
+
+export function sanitizeStringForHTML(string: string)
+{
+    return string.replaceAll("&", "&amp;").replaceAll("\"", "&quot;").replaceAll("'", "&#039;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
+}
